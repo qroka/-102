@@ -1,0 +1,84 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/*
+ * Design tokens. Components get their look from app.config.ts (Nuxt UI theme);
+ * pages only use these tokens — no hex colours or px font sizes in templates.
+ */
+@theme static {
+  --font-sans: 'Manrope', 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* brand palette (used as Nuxt UI "primary") */
+  --color-brand-50: #eaf6f7;
+  --color-brand-100: #d3eef1;
+  --color-brand-200: #a9dde3;
+  --color-brand-300: #7ccbd5;
+  --color-brand-400: #4fb6c4;
+  --color-brand-500: #2f9bab;
+  --color-brand-600: #227f8d;
+  --color-brand-700: #1d6673;
+  --color-brand-800: #17505a;
+  --color-brand-900: #0f3b44;
+  --color-brand-950: #082228;
+
+  /* type scale */
+  --text-display: 1.875rem;   --text-display--line-height: 1.15;   /* page title, big numbers */
+  --text-stat: 1.625rem;      --text-stat--line-height: 1.1;       /* stats */
+  --text-title: 1.1875rem;    --text-title--line-height: 1.3;      /* section title */
+  --text-heading: 1rem;       --text-heading--line-height: 1.3;    /* row title */
+  --text-body: 0.9375rem;     --text-body--line-height: 1.6;       /* paragraphs */
+  --text-button: 0.9rem;      --text-button--line-height: 1.2;
+  --text-meta: 0.84375rem;    --text-meta--line-height: 1.35;      /* row subtitle / meta */
+  --text-caption: 0.78125rem; --text-caption--line-height: 1.3;    /* captions, legends */
+
+  /* radii */
+  --radius-card: 1.75rem;
+  --radius-tile: 1.25rem;
+  --radius-tile-sm: 0.9rem;
+  --radius-nav: 0.875rem;
+}
+
+:root {
+  --ui-radius: 0.5rem;
+
+  /* stronger shades for text on white */
+  --ui-primary: var(--ui-color-primary-600);
+  --ui-success: var(--ui-color-success-600);
+  --ui-warning: var(--ui-color-warning-600);
+  --ui-error: var(--ui-color-error-500);
+
+  --ui-bg: #eef3f4;           /* page */
+  --ui-bg-elevated: #ffffff;  /* cards, menus */
+  --ui-bg-muted: #f1f5f6;     /* soft buttons, inset blocks */
+  --ui-bg-accented: #e6edef;  /* tracks, dividers */
+  --ui-border: #e2eaec;
+  --ui-border-muted: #ebf1f2;
+  --ui-text: #0e1e22;
+  --ui-text-highlighted: #0e1e22;
+  --ui-text-toned: #3e5358;
+  --ui-text-muted: #7b8c90;
+  --ui-text-dimmed: #a0aeb1;
+}
+
+body { background: #d5e0e3; color: var(--ui-text); -webkit-tap-highlight-color: transparent; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* horizontal chip row: room for button shadows + right-edge fade hinting there is more */
+@utility scroll-row {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin-inline: -0.75rem;
+  padding: 0.375rem 2rem 0.5rem 0.75rem;
+  margin-block: -0.375rem 0.5rem;
+  scroll-padding-inline: 0.75rem;
+  mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent);
+  &::-webkit-scrollbar { display: none; }
+}
+
+.page-enter-active, .page-leave-active { transition: opacity .18s ease, transform .18s ease; }
+.page-enter-from { opacity: 0; transform: translateY(6px); }
+.page-leave-to { opacity: 0; }
